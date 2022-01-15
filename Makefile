@@ -5,3 +5,8 @@ push:
 
 gendiff:
 	node bin/gendiff.js
+
+run:
+	node bin/gendiff.js
+publish:
+	npm publish --dry-run
