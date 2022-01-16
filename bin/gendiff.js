@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
+import diffFile from "../main.js";
+
+
 const program = new Command();
 program.version('0.0.1');
 program
@@ -8,4 +11,5 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format [type] output format')
+  .action(diffFile)
   .parse(process.argv);
