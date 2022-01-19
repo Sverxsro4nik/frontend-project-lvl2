@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+import process from 'process';
 import { Command } from "commander";
 import diffFile from "../main.js";
 
