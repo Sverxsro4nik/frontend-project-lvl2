@@ -4,29 +4,35 @@ import { readFileSync } from 'fs';
 import _ from 'lodash';
 
 const diffFile = (file1, file2) => {
-  const firstFile = JSON.parse(readFileSync(path.resolve(file1) || cwd(file1)));
-  const secondFile = JSON.parse(readFileSync(path.resolve(file2) || cwd(file2)));
-  const keys = _.uniq(_.concat(_.keys(firstFile), _.keys(secondFile)));
+  const firstFile = readFileSync(path.resolve(file1) || cwd(file1));
+  const secondFile = readFileSync(path.resolve(file2) || cwd(file2));
+  let firstData;
+  let secondData;
+  if (path.extname(file1) === '.json' && path.extname(file2) === '.json') {
+    firstData = JSON.parse(firstFile);
+    secondData = JSON.parse(secondFile);
+  }
+  const keys = _.uniq(_.concat(_.keys(firstData), _.keys(secondData)));
   const result = keys.reduce((acc , key) => {
-    if (_.has(firstFile, key) && !_.has(secondFile, key)){
-      acc.push({diff: '- ', key, value: firstFile[key]});
+    if (_.has(firstData, key) && !_.has(secondData, key)){
+      acc.push({diff: '-', key, value: firstData[key]});
     }
-    if (_.has(firstFile, key) && _.has(secondFile, key) && firstFile[key] === secondFile[key]) {
-      acc.push({diff: '  ', key, value: firstFile[key]});
+    if (_.has(firstData, key) && _.has(secondData, key) && firstData[key] === secondData[key]) {
+      acc.push({diff: ' ', key, value: firstData[key]});
     }
-    if (_.has(firstFile, key) && _.has(secondFile, key) && firstFile[key] !== secondFile[key]) {
-      acc.push({diff: '-', key, value: firstFile[key]});
-      acc.push({diff: '+', key, value: secondFile[key]});
+    if (_.has(firstData, key) && _.has(secondData, key) && firstData[key] !== secondData[key]) {
+      acc.push({diff: '-', key, value: firstData[key]});
+      acc.push({diff: '+', key, value: secondData[key]});
     }
-    if (!_.has(firstFile, key) && _.has(secondFile, key)) {
-      acc.push({diff: '+', key, value: secondFile[key]});
+    if (!_.has(firstData, key) && _.has(secondData, key)) {
+      acc.push({diff: '+', key, value: secondData[key]});
     }
     return acc;
   }, []);
   const sorted = _.sortBy(result, (obg) => obg.key);
-  const arr = sorted.map(({diff, key, value}) => `\t${diff} ${key}: ${value}\n`);
-  console.log(`{
-    ${arr.join('')}}`);
+  const arr = sorted.map(({diff, key, value}) => `  ${diff} ${key}: ${value}\n`);
+  console.log(`{\n${arr.join('').trimEnd()}
+}`);
 
 };
 export default diffFile;
