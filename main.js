@@ -31,8 +31,8 @@ const diffFile = (file1, file2) => {
   }, []);
   const sorted = _.sortBy(result, (obg) => obg.key);
   const arr = sorted.map(({diff, key, value}) => `  ${diff} ${key}: ${value}\n`);
-  console.log(`{\n${arr.join('').trimEnd()}
-}`);
-
+  const finallyString = `{\n${arr.join('').trimEnd()}\n}`;
+  console.log(finallyString);
+  return finallyString;
 };
 export default diffFile;
