@@ -41,5 +41,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: maek test
+          coverageCommand: make test
           debug: true
