@@ -11,6 +11,8 @@ publish:
 
 lint:
 	npx eslint .
+test:
+	npx jest
 
-push: lint
+push: test lint
 	git push origin main
