@@ -5,7 +5,7 @@
   "main": "main.js",
   "type": "module",
   "bin": {
-    "gendiff": "bin/getdiff.js"
+    "getdiff": "bin/getdiff.js"
   },
   "simple-git-hooks": {
     "pre-push": "make lint"
