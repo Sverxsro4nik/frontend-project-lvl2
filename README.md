@@ -11,4 +11,4 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a41fb329eb56b805df1b/test_coverage)](https://codeclimate.com/github/Sverxsro4nik/frontend-project-lvl2/test_coverage)
 
 ### Ascinema
-[![asciicast](https://asciinema.org/a/ykIlPK8Gtp8kOGyupoJr6aYMU.svg)](https://asciinema.org/a/ykIlPK8Gtp8kOGyupoJr6aYMU)
+[![asciicast](https://asciinema.org/a/CpkAFzBZ2CzK2IHs02UOZtkDh.svg)](https://asciinema.org/a/CpkAFzBZ2CzK2IHs02UOZtkDh)
