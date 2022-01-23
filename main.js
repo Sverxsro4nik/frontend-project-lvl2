@@ -1,5 +1,6 @@
 import path from 'path';
 import { cwd } from 'process';
+import { load } from 'js-yaml';
 import { readFileSync } from 'fs';
 import _ from 'lodash';
 
@@ -11,6 +12,10 @@ const diffFile = (file1, file2) => {
   if (path.extname(file1) === '.json' && path.extname(file2) === '.json') {
     firstData = JSON.parse(firstFile);
     secondData = JSON.parse(secondFile);
+  }
+  if (path.extname(file1) === '.yml' && path.extname(file2) === '.yml') {
+    firstData = load(firstFile);
+    secondData = load(secondFile);
   }
   const keys = _.uniq(_.concat(_.keys(firstData), _.keys(secondData)));
   const result = keys.reduce((acc, key) => {
