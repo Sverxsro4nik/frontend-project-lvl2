@@ -22,5 +22,8 @@ test:
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
+push-branch:test lint
+	git push origin stylish
+	
 push: test lint
 	git push origin main
