@@ -14,7 +14,7 @@ publish:
 	npm publish --dry-run
 
 lint:
-	npx eslint .
+	npx eslint . --fix
 
 test:
 	npm test
@@ -22,7 +22,7 @@ test:
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
-push-branch:test lint
+push-branch: lint
 	git push origin stylish
 	
 push: test lint
