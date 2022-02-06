@@ -13,7 +13,7 @@ const diff = (data1, data2) => {
     if (_.isObject(data1[key]) && _.isObject(data2[key])) {
       console.log(diff(data1[key], data2[key]));
       return diff(data1[key], data2[key]);
-//      return `${key}: {\n${diff(data1[key], data2[key], depth + 2)}\n${step.repeat(depth)}}`;
+      //   return `${key}: {\n${diff(data1[key], data2[key], depth + 2)}\n${step.repeat(depth)}}`;
     }
     return stylish(data1, data2, key);
     // console.log(stylish(data1, data2, key));
@@ -33,6 +33,7 @@ const diffFile = (file1, file2) => {
   // const finallyString = `{\n${arr.join('').trimEnd()}\n}`;
   // console.log(finallyString);
   // return finallyString;
+  return result;
 };
 
 export default diffFile;
