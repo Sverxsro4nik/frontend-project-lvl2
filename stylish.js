@@ -4,9 +4,10 @@ const stylish = (data1, data2, key) => {
   if (_.has(data1, key) && !_.has(data2, key)) {
     return `- ${key}: ${data1[key]}`;
   } if (_.has(data1, key) && _.has(data2, key) && data1[key] === data2[key]) {
-    return ` ${key}: ${data2[key]}`;
+    return `  ${key}: ${data2[key]}`;
   } if (_.has(data1, key) && _.has(data2, key) && data1[key] !== data2[key]) {
-    return `- ${key}: ${data1[key]} \n + ${key}: ${data2[key]}`;
+    return `- ${key}: ${data1[key]},
+            + ${key}: ${data2[key]}`;
   }
   return `+ ${key}: ${data2[key]}`;
 };
