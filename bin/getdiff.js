@@ -10,5 +10,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format [type] output format')
-  .action(diffFile)
+  .action((filepath1, filepath2, { format }) => {
+    console.log(diffFile(filepath1, filepath2, format));
+  })
   .parse(process.argv);

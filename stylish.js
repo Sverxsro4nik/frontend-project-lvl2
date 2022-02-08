@@ -12,7 +12,7 @@ const stringify = (data, depth) => {
   return [
     '{',
     ...lines,
-    `${step(depth)}}`,
+    `${step(depth)}  }`,
   ].join('\n');
 };
 
@@ -29,7 +29,7 @@ const stylish = (changedTree) => {
       case 'changed':
         return `${getNodeValue(node.value1, '-')}${getNodeValue(node.value2, '+')}`;
       case 'object':
-        return `${step(depth)} ${node.key}: {\n${iter(node.child, depth + 1).join('')}${step(depth + 1)} }\n`;
+        return `${step(depth)}  ${node.key}: {\n${iter(node.child, depth + 1).join('')}${step(depth)}  }\n`;
       default:
         throw new Error(`Этот тип не определен: ${node.flag}`);
     }
