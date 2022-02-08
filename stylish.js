@@ -8,28 +8,28 @@ const stringify = (data, depth) => {
   }
   const lines = Object
     .entries(data)
-    .map(([, { flag, dataKey, value1 }]) => `${step(depth + 1)}${flag} ${dataKey}: ${stringify(value1, depth + 1)}`);
+    .map(([key, value]) => `${step(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`);
   return [
     '{',
     ...lines,
-    '}',
+    `${step(depth)}}`,
   ].join('\n');
 };
 
 const stylish = (changedTree) => {
   const iter = (data, depth) => data.map((node) => {
-    const getNodeValue = (value, flag) => `${step(depth)}${flag} ${node.dataKey}: ${stringify(value, depth)}\n`;
+    const getNodeValue = (value, flag) => `${step(depth)}${flag} ${node.key}: ${stringify(value, depth)}\n`;
     switch (node.flag) {
       case 'added':
-        return getNodeValue(node.value1, '+');
+        return getNodeValue(node.value, '+');
       case 'deleted':
-        return getNodeValue(node.value1, '-');
+        return getNodeValue(node.value, '-');
       case 'unchanged':
-        return getNodeValue(node.value1, ' ');
+        return getNodeValue(node.value, ' ');
       case 'changed':
         return `${getNodeValue(node.value1, '-')}${getNodeValue(node.value2, '+')}`;
       case 'object':
-        return `${step(depth)} ${node.dataKey}: {\n${iter(node.value1, depth + 1).join('')}${step(depth)} }\n`;
+        return `${step(depth)} ${node.key}: {\n${iter(node.child, depth + 1).join('')}${step(depth + 1)} }\n`;
       default:
         throw new Error(`Этот тип не определен: ${node.flag}`);
     }
