@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import parser from './parser.js';
-// import stylish from './stylish.js';
 
 const createDiff = (data1, data2) => {
   const keys1 = Object.keys(data1);

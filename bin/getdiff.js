@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import process from 'process';
 import { Command } from 'commander';
-import diffFile from '../main.js';
+import diffFile from '../src/main.js';
 
 const program = new Command();
 program.version('0.0.1');
