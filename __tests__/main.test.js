@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import diffFile from '../main.js';
+import diffFile from '../src/main.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

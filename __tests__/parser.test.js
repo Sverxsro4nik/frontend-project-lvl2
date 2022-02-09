@@ -4,7 +4,7 @@ import { expect, test } from '@jest/globals';
 import { load } from 'js-yaml';
 import { readFileSync } from 'fs';
 
-import parser from '../parser.js';
+import parser from '../src/parser.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
