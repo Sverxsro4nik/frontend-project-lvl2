@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import parser from './parser.js';
+import formatData from './formatters/index.js';
 
 const createDiff = (data1, data2) => {
   const keys1 = Object.keys(data1);
@@ -30,12 +31,12 @@ const createDiff = (data1, data2) => {
   return diffTree;
 };
 
-const genDiff = (filepath1, filepath2, formatData) => {
+const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const data1 = parser(filepath1);
   const data2 = parser(filepath2);
 
   const result = createDiff(data1, data2);
-  const genData = formatData(result);
+  const genData = formatData(result, format);
   return genData;
 };
 
