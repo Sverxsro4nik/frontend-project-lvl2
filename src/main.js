@@ -31,7 +31,7 @@ const createDiff = (data1, data2) => {
   return diffTree;
 };
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
+const genDiff = (filepath1, filepath2, format = 'plain') => {
   const data1 = parser(filepath1);
   const data2 = parser(filepath2);
 
