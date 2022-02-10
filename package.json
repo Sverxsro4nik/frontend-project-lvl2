@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "0.0.1",
   "description": "",
-  "main": "main.js",
+  "main": "src/main.js",
   "type": "module",
   "bin": {
     "getdiff": "bin/getdiff.js"
