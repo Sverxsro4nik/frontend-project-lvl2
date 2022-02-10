@@ -124,3 +124,10 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`,
   );
 });
+
+test('json format', async () => {
+  const firstFile = getFixturePath('file1.json');
+  const secondFile = getFixturePath('file2.json');
+  const jsonDiff = diffFile(firstFile, secondFile, 'json');
+  expect(diffFile(firstFile, secondFile, 'json')).toStrictEqual(jsonDiff);
+});
