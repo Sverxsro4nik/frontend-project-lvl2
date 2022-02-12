@@ -1,11 +1,18 @@
+import { readFileSync } from 'fs';
+import path from 'path';
+import { cwd } from 'process';
 import parser from './src/parser.js';
 import formatData from './src/formatters/index.js';
 import createDiff from './src/createDiff.js';
 
+const readFile = (file) => readFileSync(path.resolve(file) || cwd(file), 'utf-8');
+
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
-  const data1 = parser(filepath1);
-  const data2 = parser(filepath2);
-  const result = createDiff(data1, data2);
+  const data1 = readFile(filepath1);
+  const data2 = readFile(filepath2);
+  const parseData1 = parser(data1);
+  const parseData2 = parser(data2);
+  const result = createDiff(parseData1, parseData2);
   const genData = formatData(result, format);
   return genData;
 };
