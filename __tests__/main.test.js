@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import { readFileSync } from 'fs';
 import { expect, test } from '@jest/globals';
-import diffFile from '../src/main.js';
+import diffFile from '../index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
