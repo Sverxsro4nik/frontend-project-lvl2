@@ -1,3 +1,11 @@
+### Описание
+Программа выполняет сравнение два файла и выводит в консоль различия.
+Различия выводятся в трех разных форматах
+
+### Запуск приложения
+Для запуска приложения необходимо выполнить команду
+make install
+
 ### Hexlet workflow
 [![hexlet-check](https://github.com/Sverxsro4nik/frontend-project-lvl2/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Sverxsro4nik/frontend-project-lvl2/actions/workflows/hexlet-check.yml)
 

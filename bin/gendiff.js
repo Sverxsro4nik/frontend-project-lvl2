@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import process from 'process';
+// import process from 'process';
 import { Command } from 'commander';
 import diffFile from '../src/main.js';
 
@@ -13,4 +13,4 @@ program
   .action((filepath1, filepath2, { format }) => {
     console.log(diffFile(filepath1, filepath2, format));
   })
-  .parse(process.argv);
+  .parse();
