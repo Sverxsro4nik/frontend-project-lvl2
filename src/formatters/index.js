@@ -1,13 +1,13 @@
 import plain from './plain.js';
 import stylish from './stylish.js';
 
-const formatData = (tree, format) => {
+const formatData = (tree, format = 'stylish') => {
   switch (format) {
     case 'stylish': return stylish(tree);
     case 'plain': return plain(tree);
     case 'json': return JSON.stringify(tree);
     default:
-      throw new Error('This formatter does not exist.');
+      throw new Error(`The ${format} does not exist.`);
   }
 };
 
